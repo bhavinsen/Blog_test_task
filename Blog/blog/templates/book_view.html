@@ -1,0 +1,28 @@
+
+<div class="main">
+     {% for data in dataset %}
+ 
+        Title: {{ data.title }}<br/>
+        Author: {{ data.author__name }}<br/>
+        <input type="text" name="title" value={{data.title}}>Title</input>
+        <button type="submit">Edit</button>
+        <hr>
+ 
+    {% endfor %}
+
+    {% for author in queryset %}
+    <li> {{ author.name }}
+    <ul>
+    {% for book in author.book_set.all %}
+        <li>{{ book.title }}</li>
+    {% endfor %}
+    </ul>
+    </li>
+    {% endfor %}
+
+    {% for author in authors %}
+    {{ author.name }}: {{ author.num_books }}<br />
+    {% endfor %}
+
+ 
+</div>
